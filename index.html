@@ -1,0 +1,506 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NEW88 | Đăng Ký, Đăng Nhập</title>
+    <link rel="stylesheet" href="style.css">
+    <!-- Liên kết thư viện FontAwesome Free -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <!-- Header Giao diện Đa nền tảng -->
+<header class="top-header">
+    <!-- Icon Menu (Chỉ hiển thị trên Mobile) -->
+    <div class="mobile-menu-btn mobile-only">
+        <i class="fas fa-bars"></i>
+    </div>
+
+    <!-- Logo ở giữa -->
+    <div class="logo">
+        <!-- Thay 'logo-cua-ban.png' bằng đường dẫn file logo thực tế của bạn -->
+        <img src="images/logo.png" alt="Logo">
+    </div>
+
+    <!-- Cụm nút hành động (Chỉ hiển thị trên Desktop) -->
+    <div class="auth-buttons desktop-only">
+        <!-- Trên Desktop -->
+<button class="btn btn-login" onclick="openAuthModal('login')">Đăng nhập</button>
+<button class="btn btn-register" onclick="openAuthModal('register')">Đăng ký</button>
+
+        <button class="btn btn-play">Chơi thử</button>
+        
+    </div>
+
+    <!-- Icon Tải App (Chỉ hiển thị trên Mobile) -->
+    <div class="mobile-app-btn mobile-only">
+        <i class="fas fa-mobile-alt"></i>
+        <span>APP</span>
+    </div>
+</header>
+
+    <!-- Navigation chính (Chỉ hiển thị trên Desktop, tự động căn giữa) -->
+<nav class="main-nav desktop-only">
+    <ul>
+        <li class="active">Trang Chủ</li>
+        <li>
+            <span class="badge badge-hot">HOT</span>
+            Casino
+        </li>
+        <li>
+            <span class="badge badge-hot">HOT</span>
+            Nổ Hũ
+        </li>
+        <li>Bắn Cá</li>
+        <li>Thể Thao</li>
+        <li>Game Bài</li>
+        <li>Đá Gà</li>
+        <li>Xổ Số</li>
+        <li>
+            <span class="badge badge-hot">HOT</span>
+            Khuyến Mãi
+        </li>
+        <li>VIP</li>
+        <li>
+            <span class="badge badge-percent">60%</span>
+            Đại Lý
+        </li>
+        <li>Đại Sứ</li>
+    </ul>
+</nav>
+
+   <!-- Hero Banner Slider -->
+<section class="banner-section">
+    <div class="slider-container">
+        <!-- Khối chứa các ảnh trượt -->
+        <div class="slider-track" id="sliderTrack">
+            <!-- Slide 1 -->
+            <div class="slide">
+                <img src="images/banner1.jpg" alt="Banner 1" class="banner-img">
+            </div>
+            <!-- Slide 2 -->
+            <div class="slide">
+                <img src="images/banner2.jpg" alt="Banner 2" class="banner-img">
+            </div>
+            <!-- Slide 3 -->
+            <div class="slide">
+                <img src="images/banner3.jpg" alt="Banner 3" class="banner-img">
+            </div>
+            <!-- Slide 4 -->
+            <div class="slide">
+                <img src="images/banner4.jpg" alt="Banner 4" class="banner-img">
+            </div>
+            <!-- Slide 5 -->
+            <div class="slide">
+                <img src="images/banner5.jpg" alt="Banner 5" class="banner-img">
+            </div>
+            <!-- Slide 6 -->
+            <div class="slide">
+                <img src="images/banner6.jpg" alt="Banner 6" class="banner-img">
+            </div>
+        </div>
+
+        <!-- Nút điều hướng Mũi tên trái/phải -->
+        <button class="slider-arrow prev-arrow" onclick="moveSlide(-1)">&#10094;</button>
+        <button class="slider-arrow next-arrow" onclick="moveSlide(1)">&#10095;</button>
+
+        <!-- Nút điều hướng Dấu chấm tròn ở đáy -->
+        <div class="slider-dots" id="sliderDots">
+            <span class="dot active" onclick="currentSlide(0)"></span>
+            <span class="dot" onclick="currentSlide(1)"></span>
+            <span class="dot" onclick="currentSlide(2)"></span>
+            <span class="dot" onclick="currentSlide(3)"></span>
+            <span class="dot" onclick="currentSlide(4)"></span>
+            <span class="dot" onclick="currentSlide(5)"></span>
+        </div>
+    </div>
+</section>
+   <!-- Khu vực Đăng ký / Đăng nhập (Chỉ hiển thị trên Mobile) -->
+<div class="mobile-auth-section mobile-only">
+    <button class="m-btn m-btn-register" onclick="openAuthModal('register')">ĐĂNG KÝ</button>
+    <button class="m-btn m-btn-login" onclick="openAuthModal('login')">ĐĂNG NHẬP</button>
+</div>
+    <!-- Thanh thông báo (Marquee) -->
+    <div class="announcement-bar">
+        <i class="fas fa-bullhorn"></i>
+        <marquee behavior="scroll" direction="left">Chào mừng bạn đến với hệ thống. Tải app ngay để nhận ưu đãi đặc biệt!</marquee>
+    </div>
+   <!-- Thanh Menu cuộn ngang (Chỉ hiển thị trên Mobile) -->
+<nav class="mobile-scroll-menu mobile-only">
+    <ul class="scroll-list">
+        <!-- Thay đổi class="fas fa-fire" từ FontAwesome để lấy icon ngọn lửa -->
+        <li class="active"><i class="fas fa-fire"></i> HOT</li>
+        <li>Casino</li>
+        <li>Nổ Hũ</li>
+        <li>Bắn Cá</li>
+        <li>Thể Thao</li>
+        <li>Game Bài</li>
+        <li>Đá Gà</li>
+        <li>Xổ Số</li>
+    </ul>
+</nav>
+<!-- Lưới Danh Sách Game (Mobile Only) -->
+<div class="mobile-games-section mobile-only">
+    <div class="mobile-games-grid">
+        <!-- Game 1 -->
+        <div class="m-game-card" style="background-image: url('images/1.png');">
+            <div class="m-category-tag">SÒNG BÀI</div>
+            <div class="m-game-title">SE TRỰC TUYẾN</div>
+        </div>
+        
+        <!-- Game 2 -->
+        <div class="m-game-card" style="background-image: url('images/2.png');">
+            <div class="m-category-tag">SÒNG BÀI</div>
+            <div class="m-game-title">DG TRỰC TUYẾN</div>
+        </div>
+
+        <!-- Game 3 -->
+        <div class="m-game-card" style="background-image: url('images/3.png');">
+            <div class="m-category-tag">THỂ THAO</div>
+            <div class="m-game-title">SABA THỂ THAO</div>
+        </div>
+
+        <!-- Game 4 -->
+        <div class="m-game-card" style="background-image: url('images/4.png');">
+            <div class="m-category-tag">NỔ HŨ</div>
+            <div class="m-game-title">QUYẾT CHIẾN TIỀN...</div>
+        </div>
+
+        <!-- Game 5 -->
+        <div class="m-game-card" style="background-image: url('images/5.png');">
+            <div class="m-category-tag">NỔ HŨ</div>
+            <div class="m-game-title">KHO BÁU AZTEC 2</div>
+        </div>
+
+        <!-- Game 6 -->
+        <div class="m-game-card" style="background-image: url('images/6.png');">
+            <div class="m-category-tag">NỔ HŨ</div>
+            <div class="m-game-title">QUYẾT CHIẾN TIỀN...</div>
+        </div>
+        <!-- Game 7 -->
+        <div class="m-game-card" style="background-image: url('images/7.png');">
+            <div class="m-category-tag">SÒNG BÀI</div>
+            <div class="m-game-title">ĐƯỜNG MẠT CHƯỢC 2</div>
+        </div>
+        
+        <!-- Game 8 -->
+        <div class="m-game-card" style="background-image: url('images/8.png');">
+            <div class="m-category-tag">SÒNG BÀI</div>
+            <div class="m-game-title">ĐƯỜNG MẠT CHƯỢC</div>
+        </div>
+
+        <!-- Game 9 -->
+        <div class="m-game-card" style="background-image: url('images/9.png');">
+            <div class="m-category-tag">THỂ THAO</div>
+            <div class="m-game-title">JACKPOT ĐÁNH CÁ</div>
+        </div>
+
+        <!-- Game 10 -->
+        <div class="m-game-card" style="background-image: url('images/10.png');">
+            <div class="m-category-tag">NỔ HŨ</div>
+            <div class="m-game-title">MAHJONG TAY THẦN 2 </div>
+        </div>
+
+        <!-- Game 11 -->
+        <div class="m-game-card" style="background-image: url('images/11.png');">
+            <div class="m-category-tag">NỔ HŨ</div>
+            <div class="m-game-title">NĂM MỚI LỘ LỘ </div>
+        </div>
+
+        <!-- Game 12 -->
+        <div class="m-game-card" style="background-image: url('images/12.png');">
+            <div class="m-category-tag">NỔ HŨ</div>
+            <div class="m-game-title">KHO BÁU AZTEC</div>
+        </div>
+        <!-- Game 13 -->
+        <div class="m-game-card" style="background-image: url('images/13.png');">
+            <div class="m-category-tag">SÒNG BÀI</div>
+            <div class="m-game-title">SIÊU CẤP ACE</div>
+        </div>
+        
+        <!-- Game 14 -->
+        <div class="m-game-card" style="background-image: url('images/14.png');">
+            <div class="m-category-tag">SÒNG BÀI</div>
+            <div class="m-game-title">PHI CÔNG</div>
+        </div>
+
+        <!-- Game 15 -->
+        <div class="m-game-card" style="background-image: url('images/15.png');">
+            <div class="m-category-tag">THỂ THAO</div>
+            <div class="m-game-title">XÌ DÁCH</div>
+        </div>
+
+        <!-- Game 16 -->
+        <div class="m-game-card" style="background-image: url('images/16.png');">
+            <div class="m-category-tag">NỔ HŨ</div>
+            <div class="m-game-title">BẮN CÁ VŨ TRỤ</div>
+        </div>
+
+        <!-- Game 17 -->
+        <div class="m-game-card" style="background-image: url('images/17.png');">
+            <div class="m-category-tag">NỔ HŨ</div>
+            <div class="m-game-title">TÀI XỈU</div>
+        </div>
+
+        <!-- Game 18 -->
+        <div class="m-game-card" style="background-image: url('images/18.png');">
+            <div class="m-category-tag">NỔ HŨ</div>
+            <div class="m-game-title">VUA ĐÁNH CÁ</div>
+        </div>
+    </div>
+</div>
+    <!-- Nội dung chính: Tính Năng Vượt Trội (Chỉ hiển thị trên Desktop) -->
+<main class="features-section desktop-only">
+    <h2 class="features-title">NHỮNG TÍNH NĂNG VƯỢT TRỘI</h2>
+    
+    <div class="features-grid">
+        <!-- Tính năng 1 -->
+        <div class="feature-item">
+            <!-- Thay bằng tên file icon thật của bạn, ví dụ: image_365759.png -->
+            <div class="feature-icon">
+                <img src="images/thuonghieu.png" alt="Thương Hiệu Uy Tín">
+            </div>
+            <h3 class="feature-name">Thương Hiệu Uy Tín</h3>
+            <p class="feature-desc">Thương hiệu uy tín được nhiều người tin tưởng lựa chọn</p>
+        </div>
+
+        <!-- Đường gạch dọc phân cách -->
+        <div class="feature-divider"></div>
+
+        <!-- Tính năng 2 -->
+        <div class="feature-item">
+            <div class="feature-icon">
+                <img src="images/dadang.png" alt="Đa Dạng Sản Phẩm">
+            </div>
+            <h3 class="feature-name">Đa Dạng Sản Phẩm</h3>
+            <p class="feature-desc">Casino, Thể Thao, Nổ Hũ, Bắn Cá, Đá Gà... Nhiều sản phẩm đa dạng.</p>
+        </div>
+
+        <!-- Đường gạch dọc phân cách -->
+        <div class="feature-divider"></div>
+
+        <!-- Tính năng 3 -->
+        <div class="feature-item">
+            <div class="feature-icon">
+                <img src="images/anninh.png" alt="An Ninh Bảo Mật">
+            </div>
+            <h3 class="feature-name">An Ninh Bảo Mật</h3>
+            <p class="feature-desc">Phương thức thanh toán đa dạng, đảm bảo an toàn và bảo mật cao.</p>
+        </div>
+
+        <!-- Đường gạch dọc phân cách -->
+        <div class="feature-divider"></div>
+
+        <!-- Tính năng 4 -->
+        <div class="feature-item">
+            <div class="feature-icon">
+                <img src="images/giaodich.png" alt="Giao Dịch Nhanh Chóng">
+            </div>
+            <h3 class="feature-name">Giao Dịch Nhanh Chóng</h3>
+            <p class="feature-desc">Giao dịch gửi tiền xử lý từ 1-3 phút. Thời gian rút tiền trong vòng 3 - 5 phút.</p>
+        </div>
+    </div>
+</main>
+<!-- Khu vực Trò Chơi Hot (Chỉ hiển thị trên Desktop) -->
+<section class="hot-games-section desktop-only">
+    <h2 class="section-title">TRÒ CHƠI HOT</h2>
+
+    <!-- Thanh Tabs Danh Mục Game -->
+    <div class="tabs-container">
+        <button class="tab-arrow left-arrow"><i class="fas fa-caret-left"></i></button>
+        <div class="tabs-list">
+            <button class="tab-btn active">PG Điện Tử</button>
+            <button class="tab-btn">TP Điện Tử</button>
+            <button class="tab-btn">JILI Điện Tử</button>
+            <button class="tab-btn">CQ9 Điện Tử</button>
+            <button class="tab-btn">FC Điện Tử</button>
+            <button class="tab-btn">JDB Bắn Cá</button>
+            <button class="tab-btn">PP Điện Tử</button>
+            <button class="tab-btn">188G Điện Tử</button>
+        </div>
+        <button class="tab-arrow right-arrow"><i class="fas fa-caret-right"></i></button>
+    </div>
+
+    <!-- Lưới Danh Sách Game (6 cột x 2 hàng) -->
+    <div class="games-grid">
+        <!-- Game 1 -->
+        <div class="game-item">
+            <div class="game-img-wrapper">
+                <!-- Đổi tên file ảnh thực tế của bạn vào thuộc tính src -->
+                <img src="images/pc1.png" alt="Kho Báu Aztec">
+            </div>
+            <div class="game-title">Kho Báu Aztec</div>
+        </div>
+        <!-- Game 2 -->
+        <div class="game-item">
+            <div class="game-img-wrapper">
+                <img src="images/pc2.png" alt="Đường Mạt Chược">
+            </div>
+            <div class="game-title">Đường Mạt Chược</div>
+        </div>
+        <!-- Game 3 -->
+        <div class="game-item">
+            <div class="game-img-wrapper">
+                <img src="images/pc3.png" alt="Đường Mạt Chược 2">
+            </div>
+            <div class="game-title">Đường Mạt Chược 2</div>
+        </div>
+        <!-- Game 4 -->
+        <div class="game-item">
+            <div class="game-img-wrapper">
+                <img src="images/pc4.png" alt="Neko May Mắn">
+            </div>
+            <div class="game-title">Neko May Mắn</div>
+        </div>
+        <!-- Game 5 -->
+        <div class="game-item">
+            <div class="game-img-wrapper">
+                <img src="images/pc5.png" alt="Chiến Thắng CaiShen">
+            </div>
+            <div class="game-title">Chiến Thắng CaiShen</div>
+        </div>
+        <!-- Game 6 -->
+        <div class="game-item">
+            <div class="game-img-wrapper">
+                <img src="images/pc6.png" alt="Wild Đạo Tặc">
+            </div>
+            <div class="game-title">Wild Đạo Tặc</div>
+        </div>
+        
+        <!-- Game 7 -->
+        <div class="game-item">
+            <div class="game-img-wrapper">
+                <img src="images/pc7.png" alt="Pháo hoa Wild">
+            </div>
+            <div class="game-title">Pháo hoa Wild</div>
+        </div>
+        <!-- Game 8 -->
+        <div class="game-item">
+            <div class="game-img-wrapper">
+                <img src="images/pc8.png" alt="Giấc Mơ Ma Cao">
+            </div>
+            <div class="game-title">Giấc Mơ Ma Cao</div>
+        </div>
+        <!-- Game 9 -->
+        <div class="game-item">
+            <div class="game-img-wrapper">
+                <img src="images/pc9.png" alt="Kỳ Lân Mách Nước">
+            </div>
+            <div class="game-title">Kỳ Lân Mách Nước</div>
+        </div>
+        <!-- Game 10 -->
+        <div class="game-item">
+            <div class="game-img-wrapper">
+                <img src="images/pc10.png" alt="Kho Báu Ganesha">
+            </div>
+            <div class="game-title">Kho Báu Ganesha</div>
+        </div>
+        <!-- Game 11 -->
+        <div class="game-item">
+            <div class="game-img-wrapper">
+                <img src="images/pc11.png" alt="Kho Báu Của Thủy Thủ">
+            </div>
+            <div class="game-title">Kho Báu Của Thủy...</div>
+        </div>
+        <!-- Game 12 -->
+        <div class="game-item">
+            <div class="game-img-wrapper">
+                <img src="images/pc12.png" alt="Quyết Chiến Tiền Thưởng">
+            </div>
+            <div class="game-title">Quyết Chiến Tiền...</div>
+        </div>
+    </div>
+</section>
+
+    <!-- Sidebar bên phải (Chỉ Desktop) -->
+    <aside class="right-sidebar desktop-only">
+        <ul>
+            <li><i class="fas fa-headset"></i><br>CSKH 24/7</li>
+            <li><i class="fas fa-gift"></i><br>Quà Tặng</li>
+            <li><i class="fas fa-mobile-alt"></i><br>Tải App</li>
+        </ul>
+    </aside>
+
+    <!-- Bottom Navigation (Chỉ hiển thị trên Mobile) -->
+<nav class="bottom-nav mobile-only">
+    <ul>
+        <li class="active"><i class="fas fa-home"></i><br>TRANG CHỦ</li>
+        <li><i class="far fa-handshake"></i><br>ĐẠI LÝ 60%</li>
+        <li><i class="fas fa-gift"></i><br>KHUYẾN MÃI</li>
+        <li><i class="fas fa-history"></i><br>CSKH 24/7</li>
+        <li><i class="fas fa-gamepad"></i><br>CHƠI THỬ</li>
+    </ul>
+</nav>
+    <!-- Modal Đăng Ký / Đăng Nhập -->
+<div id="authModal" class="modal-overlay">
+    <div class="modal-content">
+        <!-- Nút đóng Modal -->
+        <span class="close-modal" onclick="closeAuthModal()">&times;</span>
+        
+        <!-- Phần Header của Modal -->
+        <div class="modal-header">
+            <img src="images/logo.png" alt="Logo" class="modal-logo">
+            <h3 class="modal-slogan">NƠI CẢM XÚC KHÔNG GIỚI HẠN</h3>
+            <p class="modal-sub-slogan">TẢI APP <span>1.1.1.1</span> ĐỂ TRUY CẬP <span>NEW88.COM</span></p>
+        </div>
+
+        <!-- Nút chuyển Tab Đăng ký / Đăng nhập -->
+        <div class="auth-tabs">
+            <button class="auth-tab-btn active" id="tabRegister" onclick="switchAuthTab('register')">ĐĂNG KÝ</button>
+            <button class="auth-tab-btn" id="tabLogin" onclick="switchAuthTab('login')">ĐĂNG NHẬP</button>
+        </div>
+
+        <!-- FORM ĐĂNG KÝ -->
+        <form id="formRegister" class="auth-form active-form">
+            <div class="input-group">
+                <input type="text" placeholder="Tên đăng nhập" required>
+            </div>
+            <div class="input-group">
+                <input type="password" placeholder="Mật khẩu" required>
+                <i class="fas fa-eye-slash toggle-pw"></i>
+            </div>
+            <div class="input-group">
+                <input type="text" placeholder="Họ tên thật" required>
+            </div>
+            <div class="input-group phone-group">
+                <div class="country-code">
+                    <img src="https://flagcdn.com/w20/vn.png" alt="VN"> +84
+                </div>
+                <input type="tel" placeholder="Nhập số điện thoại" required>
+            </div>
+            <div class="checkbox-group">
+                <input type="checkbox" id="agreeTerm" checked required>
+                <label for="agreeTerm">Tôi đã hiểu <span>Thỏa thuận đăng ký người dùng</span></label>
+            </div>
+            <button type="submit" class="submit-btn">ĐĂNG KÝ NGAY</button>
+        </form>
+
+        <!-- FORM ĐĂNG NHẬP (Đã thêm trường Số điện thoại) -->
+        <form id="formLogin" class="auth-form">
+            <div class="input-group">
+                <input type="text" placeholder="Vui lòng nhập tên tài khoản" required>
+            </div>
+            <div class="input-group">
+                <input type="password" placeholder="Vui lòng nhập mật khẩu" required>
+                <i class="fas fa-eye-slash toggle-pw"></i>
+            </div>
+            <!-- Trường nhập số điện thoại (Mới thêm) -->
+            <div class="input-group phone-group">
+                <div class="country-code">
+                    <img src="https://flagcdn.com/w20/vn.png" alt="VN"> +84
+                </div>
+                <input type="tel" placeholder="Nhập số điện thoại" required>
+            </div>
+            <div class="checkbox-group">
+                <input type="checkbox" id="rememberMe">
+                <label for="rememberMe">Ghi nhớ tài khoản mật khẩu?</label>
+            </div>
+            <p class="security-notice">Vui lòng tự bảo quản thông tin tài khoản<br>Để bảo đảm an toàn cho tài khoản của bạn</p>
+            <button type="submit" class="submit-btn">ĐĂNG NHẬP</button>
+        </form>
+    </div>
+</div>
+
+    <script src="script.js"></script>
+</body>
+</html>
